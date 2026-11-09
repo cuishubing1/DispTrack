@@ -1,0 +1,87 @@
+output_dir: ./outputs/deim_hgnetv2_m3ot_dual_v12_infer
+
+model: DualDecoderDEIM
+postprocessor: PostProcessor
+
+num_classes: 1
+use_focal_loss: True
+remap_mscoco_category: False
+
+DualDecoderDEIM:
+  backbone_rgb: BackboneRGB
+  backbone_ir: BackboneIR
+  fusion: OffsetGuidedDeformableFusionList
+  encoder: HybridEncoder
+  encoder_ir: EncoderIR
+  decoder_rgb: DecoderRGB
+  decoder_ir: DecoderIR
+
+BackboneRGB:
+  type: HGNetv2
+  name: 'B0'
+  pretrained: False
+  use_lab: True
+  return_idx: [1, 2, 3]
+  freeze_at: -1
+  freeze_norm: False
+
+BackboneIR:
+  type: HGNetv2
+  name: 'Nano'
+  in_channels: 1
+  pretrained: False
+  use_lab: True
+  return_idx: [1, 2, 3]
+  freeze_at: -1
+  freeze_norm: False
+
+OffsetGuidedDeformableFusionList:
+  in_channels: [256, 512, 1024]
+  strides: [8, 16, 32]
+  n_points: 8
+  n_heads: 8
+  max_offset: 30.0
+
+HybridEncoder:
+  in_channels: [256, 512, 1024]
+  hidden_dim: 256
+  depth_mult: 0.34
+  expansion: 0.5
+
+EncoderIR:
+  type: HybridEncoder
+  in_channels: [256, 512, 1024]
+  hidden_dim: 256
+  depth_mult: 0.34
+  expansion: 0.5
+
+DecoderRGB:
+  type: DFINETransformer
+  feat_channels: [256, 256, 256]
+  feat_strides: [8, 16, 32]
+  hidden_dim: 256
+  num_levels: 3
+  num_layers: 3
+  eval_idx: -1
+  num_queries: 300
+  reg_max: 32
+  reg_scale: 4
+  ir_feat_channels: null
+  ir_obj_boost: False
+
+DecoderIR:
+  type: DFINETransformer
+  feat_channels: [256, 256, 256]
+  feat_strides: [8, 16, 32]
+  hidden_dim: 256
+  num_levels: 3
+  num_layers: 3
+  eval_idx: -1
+  num_queries: 300
+  reg_max: 32
+  reg_scale: 4
+  ir_feat_channels: null
+  ir_obj_boost: False
+
+PostProcessor:
+  num_top_queries: 300

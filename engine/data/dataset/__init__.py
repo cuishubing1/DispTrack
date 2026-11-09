@@ -1,0 +1,2 @@
+from .dual_modal_coco_dataset import DualModalCocoDetection
+from .coco_dataset import mscoco_label2category

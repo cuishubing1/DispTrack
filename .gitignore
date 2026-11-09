@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+/data/
+/M3OT/
+/weights/
+/outputs/
+/inference_results/
+*.pth
+*.pt
+*.onnx
+*.engine
+.DS_Store

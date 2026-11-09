@@ -1,0 +1,90 @@
+{
+  "frame_indexing": "1-based inclusive",
+  "rules": [
+    {
+      "source_rgb": "2-02",
+      "drop": [
+        169,
+        178
+      ],
+      "segments": [
+        {
+          "target_rgb": "2-02",
+          "source_frames": [
+            1,
+            168
+          ],
+          "remap_track_ids": false
+        },
+        {
+          "target_rgb": "2-10",
+          "source_frames": [
+            179,
+            700
+          ],
+          "remap_track_ids": true
+        }
+      ]
+    },
+    {
+      "source_rgb": "2-06",
+      "drop": [
+        185,
+        194
+      ],
+      "segments": [
+        {
+          "target_rgb": "2-06",
+          "source_frames": [
+            1,
+            184
+          ],
+          "remap_track_ids": false
+        },
+        {
+          "target_rgb": "2-11",
+          "source_frames": [
+            195,
+            600
+          ],
+          "remap_track_ids": true
+        }
+      ]
+    }
+  ],
+  "documented_view1_cuts": [
+    {
+      "source_rgb": "1-03",
+      "targets_rgb": [
+        "1-03",
+        "1-14"
+      ],
+      "source_frames": null
+    },
+    {
+      "source_rgb": "1-01",
+      "targets_rgb": [
+        "1-01",
+        "1-10",
+        "1-11"
+      ],
+      "source_frames": null
+    },
+    {
+      "source_rgb": "1-02",
+      "targets_rgb": [
+        "1-02",
+        "1-12"
+      ],
+      "source_frames": null
+    },
+    {
+      "source_rgb": "1-06",
+      "targets_rgb": [
+        "1-06",
+        "1-13"
+      ],
+      "source_frames": null
+    }
+  ]
+}

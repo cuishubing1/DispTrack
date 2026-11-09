@@ -1,0 +1,8 @@
+numpy
+scipy
+PyYAML
+Pillow
+tensorboard
+einops
+boxmot
+pycocotools
